@@ -101,7 +101,7 @@ function buildChart(labels, data) {
   new Chart(myChart, config);
 }
 
-// Function to make Ajax request to get the data using JSON
+// Ajax Block
 function getData() {
   // Creating the XMLHttpRequest object
   var request = new XMLHttpRequest();
