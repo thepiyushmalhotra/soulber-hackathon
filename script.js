@@ -3,8 +3,8 @@ const myChart = document.getElementById("myChart").getContext("2d");
 let delayed;
 
 let gradient = myChart.createLinearGradient(0, 0, 0, 400);
-gradient.addColorStop(0, "rgba(27, 163, 156, 1)");
-gradient.addColorStop(1, "rgba(3, 201, 169, 0.3)");
+gradient.addColorStop(0, "rgba(255,255,255, 1)");
+gradient.addColorStop(1, "rgba(30, 81, 123, 1)");
 
 // Create JSON Data for the chart
 const pseudo_res = {
@@ -39,7 +39,7 @@ function buildChart(labels, data) {
         fill: true,
         backgroundColor: gradient,
         borderColor: "#44cc9c",
-        pointBackgroundColor: "#0F084B",
+        pointBackgroundColor: "#FDFFFF",
       },
     ],
   };
