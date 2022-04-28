@@ -84,11 +84,15 @@ function buildChart(labels, data) {
           },
           grid: {
             display: false,
+            drawBorder: false,
+            drawOnChartArea: false,
           },
         },
         x: {
           grid: {
             display: false,
+            drawBorder: false,
+            drawOnChartArea: false,
           },
         },
       },
