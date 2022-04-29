@@ -34,33 +34,81 @@ function buildChart(labels, data) {
     labels,
     datasets: [
       {
-        data,
-        label: "Soulber Points Chart",
-        fill: true,
-        backgroundColor: gradient,
-        borderColor: "#44cc9c",
-        pointBackgroundColor: "#FDFFFF",
+        label: "Scatter Dataset",
+        data: [
+          {
+            x: 0,
+            y: 0,
+          },
+          {
+            x: 1.2,
+            y: 3.1,
+          },
+          {
+            x: 1.4,
+            y: 2,
+          },
+          {
+            x: 2.1,
+            y: 4.5,
+          },
+          {
+            x: 2.5,
+            y: 3.8,
+          },
+          {
+            x: 3.4,
+            y: 3.5,
+          },
+          {
+            x: 3.5,
+            y: 3.5,
+          },
+          {
+            x: 4.1,
+            y: 2.5,
+          },
+          {
+            x: 4.5,
+            y: 4.9,
+          },
+          {
+            x: 5.1,
+            y: 5.2,
+          },
+        ],
+        backgroundColor: "navy blue",
+        borderColor: "white",
       },
     ],
   };
 
   const config = {
-    type: "line",
+    type: "scatter",
     data: json_data,
     options: {
+      tooltips: {
+        mode: "index",
+        intersect: false,
+      },
+      hover: {
+        mode: "index",
+        intersect: false,
+      },
       plugins: {
         title: {
-          display: false,
+          display: true,
         },
         legend: {
           display: false,
         },
       },
       radius: 5,
-      hitRadius: 25,
+      hitRadius: 10,
       hoverRadius: 10,
       lineTension: 0.3,
       responsive: true,
+      showLine: true,
       animation: {
         onComplete: () => {
           delayed: true;
@@ -87,13 +135,19 @@ function buildChart(labels, data) {
             drawBorder: false,
             drawOnChartArea: false,
           },
+          beginAtZero: true,
         },
         x: {
-          grid: {
+          ticks: {
             display: false,
+            color: "black",
+          },
+          grid: {
+            display: true,
             drawBorder: false,
             drawOnChartArea: false,
           },
+          beginAtZero: true,
         },
       },
     },
