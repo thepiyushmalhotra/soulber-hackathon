@@ -2,9 +2,9 @@ const myChart = document.getElementById("myChart").getContext("2d");
 
 let delayed;
 
-let gradient = myChart.createLinearGradient(0, 0, 0, 400);
-gradient.addColorStop(0, "rgba(255,255,255, 1)");
-gradient.addColorStop(1, "rgba(30, 81, 123, 1)");
+let gradient = myChart.createLinearGradient(0, 0, 0, 1000);
+gradient.addColorStop(0, "rgba(255,255,255, 0.4)");
+gradient.addColorStop(1, "rgba(255,255,255, 0.1)");
 
 // Create JSON Data for the chart
 const pseudo_res = {
@@ -37,8 +37,8 @@ function buildChart(labels, data) {
         label: "Scatter Dataset",
         data: [
           {
-            x: 0,
-            y: 0,
+            x: 0.6,
+            y: 0.2,
           },
           {
             x: 1.2,
@@ -77,7 +77,8 @@ function buildChart(labels, data) {
             y: 5.2,
           },
         ],
-        backgroundColor: "navy blue",
+        fill: true,
+        backgroundColor: gradient,
         borderColor: "white",
       },
     ],
@@ -88,6 +89,11 @@ function buildChart(labels, data) {
     data: json_data,
     options: {
       tooltips: {
+        callbacks: {
+          label: function (tooltipItem) {
+            return tooltipItem.xLabel;
+          },
+        },
         mode: "index",
         intersect: false,
       },
@@ -106,10 +112,18 @@ function buildChart(labels, data) {
       radius: 5,
       hitRadius: 10,
       hoverRadius: 10,
+      pointBackgroundColor: "white",
       lineTension: 0.3,
       responsive: true,
       showLine: true,
       animation: {
+        tension: {
+          duration: 1000,
+          easing: "easeInOut",
+          from: 0.4,
+          to: 0.7,
+          loop: true,
+        },
         onComplete: () => {
           delayed: true;
         },
@@ -135,7 +149,7 @@ function buildChart(labels, data) {
             drawBorder: false,
             drawOnChartArea: false,
           },
-          beginAtZero: true,
+          beginAtZero: false,
         },
         x: {
           ticks: {
@@ -143,11 +157,11 @@ function buildChart(labels, data) {
             color: "black",
           },
           grid: {
-            display: true,
+            display: false,
             drawBorder: false,
             drawOnChartArea: false,
           },
-          beginAtZero: true,
+          beginAtZero: false,
         },
       },
     },
@@ -162,6 +176,7 @@ function getData() {
 
   // Instantiating the request object
   request.open("GET", "https://api.dictionaryapi.dev/api/v2/entries/en/bat");
+  // request.open("GET", "https://soulberbeta.com/getAllEvents");
 
   // Defining event listener for readystatechange event
   request.onreadystatechange = function () {
